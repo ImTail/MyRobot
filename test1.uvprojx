@@ -333,10 +333,10 @@
             <v6WtE>0</v6WtE>
             <v6Rtti>0</v6Rtti>
             <VariousControls>
-              <MiscControls></MiscControls>
+              <MiscControls>--no-multibyte-chars</MiscControls>
               <Define>USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>.\Start;.\Lib;.\Hardware;.\User</IncludePath>
+              <IncludePath>.\Start;.\Lib;.\Hardware;.\User;.\Sys</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -533,6 +533,31 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>Sys</GroupName>
+          <Files>
+            <File>
+              <FileName>Delay.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Sys\Delay.c</FilePath>
+            </File>
+            <File>
+              <FileName>Delay.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Sys\Delay.h</FilePath>
+            </File>
+            <File>
+              <FileName>MyIIC.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Sys\MyIIC.h</FilePath>
+            </File>
+            <File>
+              <FileName>MyIIC.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Sys\MyIIC.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>Hardware</GroupName>
           <Files>
             <File>
@@ -544,6 +569,26 @@
               <FileName>LED.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Hardware\LED.c</FilePath>
+            </File>
+            <File>
+              <FileName>OLED.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Hardware\OLED.h</FilePath>
+            </File>
+            <File>
+              <FileName>OLED.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\OLED.c</FilePath>
+            </File>
+            <File>
+              <FileName>Cartoon.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Hardware\Cartoon.h</FilePath>
+            </File>
+            <File>
+              <FileName>Cartoon.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\Cartoon.c</FilePath>
             </File>
           </Files>
         </Group>
