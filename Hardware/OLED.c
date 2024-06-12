@@ -378,7 +378,7 @@ void OLED_ClearAll(void)
 
 
 //写入8x16的数据需要用到两页 像素0~127 0~63 每page代表8行 page:0~7。规定一行为2页16个像素，一列为8个像素，即将屏幕分成了4x16的显示空间。
-void OLED_ShowChar(uint8_t column,uint8_t line,char ch)
+void OLED_ShowChar(uint8_t column,uint8_t line,char ch,uint8_t cover)
 {
 	
 	uint8_t x = column*8;
@@ -389,27 +389,32 @@ void OLED_ShowChar(uint8_t column,uint8_t line,char ch)
 		return;
 	}
 	
-	for (uint8_t i = 0 ; i < 8 ;i++)
+	if (cover==1)
 	{
-		OLED_Datas_Buff[p][x+i] |= OLED_Char_8x16[ch-' '][i];
-		
+		for (uint8_t i = 0 ; i < 8 ;i++)
+		{OLED_Datas_Buff[p][x+i] = OLED_Char_8x16[ch-' '][i];}
+		for (uint8_t i = 0 ; i < 8 ;i++)
+		{OLED_Datas_Buff[p+1][x+i] = OLED_Char_8x16[ch-' '][i+8];}
+	}
+	else
+	{
+		for (uint8_t i = 0 ; i < 8 ;i++)
+		{OLED_Datas_Buff[p][x+i] |= OLED_Char_8x16[ch-' '][i];}
+		for (uint8_t i = 0 ; i < 8 ;i++)
+		{OLED_Datas_Buff[p+1][x+i] |= OLED_Char_8x16[ch-' '][i+8];}
 	}
 	
-	for (uint8_t i = 0 ; i < 8 ;i++)
-	{
-		OLED_Datas_Buff[p+1][x+i] |= OLED_Char_8x16[ch-' '][i+8];
-	}
 	
 	OLED_FlushZoom(x,p,8,2);
 	//OLED_FlushAll();//严重影响速度
 }
 
 
-void OLED_ShowString(uint8_t column,uint8_t line,char* str,uint8_t len)
+void OLED_ShowString(uint8_t column,uint8_t line,char* str,uint8_t len,uint8_t cover)
 {
 	for (uint8_t i = 0 ; i < len ; i++)
 	{
-		OLED_ShowChar(column,line,str[i]);
+		OLED_ShowChar(column,line,str[i],cover);
 		column++;
 	}
 }
@@ -450,7 +455,7 @@ void OLED_ShowChinese(uint8_t x,uint8_t y,char* chineseChar)
 		return;
 	}
 	uint8_t page = y/8;									
-	for (uint8_t j = 0 ;  ; j++)										//遍历中文库，查找对应的中文字节(当前编码，中文是三个字节)
+	for (uint8_t j = 0 ;  ; j++)										//遍历中文库，查找对应的中文字节(当前编码，中文是2个字节)
 	{
 		if (strcmp(OLED_Chinese[j].index,chineseChar)==0 || strcmp(OLED_Chinese[j].index,"")==0)//若该项等于输入的汉字字符串，或者等于最后一项
 		{
@@ -469,4 +474,46 @@ void OLED_ShowChinese(uint8_t x,uint8_t y,char* chineseChar)
 	
 	OLED_FlushAll();
 	
+}
+
+void OLED_ShowHexNum(uint8_t column,uint8_t line,uint8_t num,uint8_t cover)
+{
+	if (OLED_CheckSize(column*8,line*2*8,32,16))
+	{
+		return;
+	}
+	OLED_ShowChar(column,line,'0',cover);
+	OLED_ShowChar(column+1,line,'x',cover);
+	uint8_t hb = 0;
+	uint8_t lb = 0;
+	while (1)
+	{
+		if (num>=16)
+		{
+			hb++;			//满16高位加１
+			num-=16;
+		} else 
+		{
+			lb=num;			//当剩下的值小于16就是低位的值
+			break;
+		}
+	}
+	
+	if (lb>=10)
+	{
+		lb = 'A'+lb-10;
+	} else 
+	{
+		lb = '0'+lb;
+	}
+	
+	if (hb>=10)
+	{
+		hb = 'A'+ hb-10;
+	} else 
+	{
+		hb = '0'+hb;
+	}
+	OLED_ShowChar(column+2,line,hb,cover);
+	OLED_ShowChar(column+3,line,lb,cover);
 }

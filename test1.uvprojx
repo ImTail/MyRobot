@@ -555,6 +555,26 @@
               <FileType>1</FileType>
               <FilePath>.\Sys\MyIIC.c</FilePath>
             </File>
+            <File>
+              <FileName>MySPI.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\hardware\MySPI.h</FilePath>
+            </File>
+            <File>
+              <FileName>MySPI.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\hardware\MySPI.c</FilePath>
+            </File>
+            <File>
+              <FileName>MyUSART.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Sys\MyUSART.h</FilePath>
+            </File>
+            <File>
+              <FileName>MyUSART.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Sys\MyUSART.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -589,6 +609,36 @@
               <FileName>Cartoon.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Hardware\Cartoon.c</FilePath>
+            </File>
+            <File>
+              <FileName>LD3320.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\hardware\LD3320.h</FilePath>
+            </File>
+            <File>
+              <FileName>LD3320.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\hardware\LD3320.c</FilePath>
+            </File>
+            <File>
+              <FileName>SYN6288.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Hardware\SYN6288.h</FilePath>
+            </File>
+            <File>
+              <FileName>SYN6288.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\SYN6288.c</FilePath>
+            </File>
+            <File>
+              <FileName>ESP8266.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\hardware\ESP8266.h</FilePath>
+            </File>
+            <File>
+              <FileName>ESP8266.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\hardware\ESP8266.c</FilePath>
             </File>
           </Files>
         </Group>

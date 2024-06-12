@@ -32,3 +32,6 @@
 .\objects\main.o: .\Sys\Delay.h
 .\objects\main.o: .\Hardware\OLED.h
 .\objects\main.o: .\Hardware\Cartoon.h
+.\objects\main.o: .\Hardware\LD3320.h
+.\objects\main.o: .\Hardware\SYN6288.h
+.\objects\main.o: .\Sys\MyUSART.h

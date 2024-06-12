@@ -3,19 +3,82 @@
 #include "Delay.h"
 #include "OLED.h"
 #include "Cartoon.h"
-
+#include "LD3320.h"
+#include "SYN6288.h"
+#include "MyUSART.h"
 
 
 int main() 
 {
-	LED_Init();
-	OLED_Init();
-	OLED_ClearAll();
-	Cartoon_Raw();
+	uint8_t res = 0;
+	uint8_t ledFlag = 1;					//¼ÇÂ¼µÆ¿ª¹Ø,Ä¬ÈÏ¿ª
+	uint8_t speechFlag = 0;					//¼ÇÂ¼ÊÇ·ñ»½ÐÑÁËÓïÒôÖúÊÖ
+	
+	LED_Init();								//LDE³õÊ¼»¯
+	/*IICÇý¶¯*/
+	OLED_Init();							//OLED³õÊ¼»¯
+	/*SPIÇý¶¯*/
+	LD3320_Init();							//³õÊ¼»¯LD3320Òý½Å
+	/*ÒÔÏÂÄ£¿éÓÃ´®¿ÚÇý¶¯*/
+	MyUSART_Init();	
+	SYN6288_Init();							//SYN6288³õÊ¼»¯
+	
+	
+	OLED_ClearAll();						//ÇåÆÁ
+	//Cartoon_Raw();							//Õ¹Ê¾³õÊ¼Í¼Ïñ
+	
+	LD3320_RunOnce();						//µÚÒ»´ÎÔËÐÐ³ÌÐò£¬Æô¶¯Ò»´ÎÊ¶±ð
+	
 	while (1)
 	{
 		
-		Cartoon_Say("ä½ ");
+		
+		if (LD3320_G_HaveResFlag()==1)		
+		{
+			//resCount = LD3320_G_ResCount();
+			res = LD3320_G_Res();
+			Delay_ms(20);
+			switch (res)
+			{
+				case 1:						//»½ÐÑÓï¾ä£¬¿É¼¤»îÒ»´Î»Ø´ð
+					SYN6288_Speech("ÔÚ");
+					speechFlag = 1;
+				break;
+				case 2:
+					SYN6288_Speech("ºÃµÄ");			
+					speechFlag = 0;
+				break;
+				case 3:
+					if (ledFlag == 0 && speechFlag == 1) 
+					{
+						speechFlag = 0;
+						ledFlag =1;
+						LED_ON();
+						SYN6288_Speech("µÆ[3]ÒÑ´ò¿ª"); 
+					}						
+				break;
+				case 4:
+					if (ledFlag == 1&& speechFlag == 1) 
+					{
+						speechFlag = 0;
+						ledFlag =0;
+						LED_OFF();
+						SYN6288_Speech("µÆ[3]ÒÑ¹Ø±Õ"); 
+					}
+				break;
+				case 5:
+					if (speechFlag==1)
+					{
+						speechFlag = 0;
+						SYN6288_Speech("[2]ÎÒÊÇ[3]stm[n1]32[2]Ö÷¿Ø[2]ÓïÒô[2]ÖúÊÖ[n2]"); 
+					}
+					
+				break;
+				default:;
+			}
+			LD3320_RunOnce();
+		}
+		Delay_ms(20);
 	}
 	
 }
