@@ -72,6 +72,7 @@ void LD3320_W_Reg(uint8_t addr,uint8_t val)
 	MySPI_SwapByte(addr);		//寄存器地址
 	MySPI_SwapByte(val);		//写入寄存器的值
 	MySPI_End();
+	Delay_ms(5);
 }
 
 uint8_t LD3320_R_Reg(uint8_t addr)
@@ -161,17 +162,18 @@ uint8_t LD3320_CheckAsrBusy(void)
 //添加识别条目
 uint8_t LD3320_AddTip(void)
 {
-	const char mess[5][20] = {"ba er liu liu","zai jian","kai deng", 
-		"guan deng", "ni shi shui"};
-	const uint8_t messCode[5] = {1,2,3,4,5};
+	const char mess[6][20] = {"ba er liu liu","zai jian","kai deng", 
+		"guan deng", "ni shi shui","lian wang"};
+	const uint8_t messCode[6] = {1,2,3,4,5,6};
 	
 	uint8_t flag = 1;//表示添加成功
-	for (uint8_t k = 0 ; k < 5 ; k++)
+	for (uint8_t k = 0 ; k < 6 ; k++)
 	{
 		if (LD3320_CheckAsrBusy() == 0)	//若某一条　条目　录入检测到繁忙，则退出循环，函数返回０，表示添加失败。
 		{
 			flag=0;
 			break;
+			
 		}
 		
 		uint8_t len;					//用于记录字符串长度

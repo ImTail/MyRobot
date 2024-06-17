@@ -35,3 +35,5 @@
 .\objects\main.o: .\Hardware\LD3320.h
 .\objects\main.o: .\Hardware\SYN6288.h
 .\objects\main.o: .\Sys\MyUSART.h
+.\objects\main.o: .\Hardware\ESP8266.h
+.\objects\main.o: .\Tools\MyStringTool.h

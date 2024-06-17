@@ -6,6 +6,9 @@
 #include "LD3320.h"
 #include "SYN6288.h"
 #include "MyUSART.h"
+#include "ESP8266.h"
+
+#include "MyStringTool.h"
 
 
 int main() 
@@ -22,21 +25,27 @@ int main()
 	/*以下模块用串口驱动*/
 	MyUSART_Init();	
 	SYN6288_Init();							//SYN6288初始化
-	
+	ESP8266_Init();
 	
 	OLED_ClearAll();						//清屏
 	//Cartoon_Raw();							//展示初始图像
 	
 	LD3320_RunOnce();						//第一次运行程序，启动一次识别
+	uint8_t x = 0;
+	
 	
 	while (1)
 	{
-		
-		
+		OLED_ShowChar(0,0,'0'+x++,1);
+		if (x>=9)
+		{
+			x=0;
+		}
 		if (LD3320_G_HaveResFlag()==1)		
 		{
 			//resCount = LD3320_G_ResCount();
 			res = LD3320_G_Res();
+			OLED_ShowChar(0,1,'0'+res,1);
 			Delay_ms(20);
 			switch (res)
 			{
@@ -74,11 +83,30 @@ int main()
 					}
 					
 				break;
+					case 6:
+					if (speechFlag==1)
+					{
+						speechFlag = 0;
+						uint8_t espRes = ESP8266_W_AT("AT","OK",5);
+						if (espRes==1)
+						{
+							SYN6288_Speech("成功"); 
+						} else if (espRes==0)
+						{
+							SYN6288_Speech("失败"); 
+						} else 
+						{
+							SYN6288_Speech("错误"); 
+						}
+						
+					}
+					
+				break;
 				default:;
 			}
 			LD3320_RunOnce();
 		}
-		Delay_ms(20);
+		Delay_ms(100);
 	}
 	
 }

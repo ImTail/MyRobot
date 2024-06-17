@@ -28,3 +28,5 @@
 .\objects\myusart.o: .\Lib\stm32f10x_usart.h
 .\objects\myusart.o: .\Lib\stm32f10x_wwdg.h
 .\objects\myusart.o: .\Lib\misc.h
+.\objects\myusart.o: Sys\MyUSART.h
+.\objects\myusart.o: .\Hardware\OLED.h

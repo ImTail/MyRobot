@@ -34,6 +34,8 @@
 ".\objects\cartoon.o"
 ".\objects\ld3320.o"
 ".\objects\syn6288.o"
+".\objects\esp8266.o"
+".\objects\mystringtool.o"
 ".\objects\stm32f10x_it.o"
 ".\objects\main.o"
 --strict --scatter ".\Objects\test1.sct"

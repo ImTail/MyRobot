@@ -336,7 +336,7 @@
               <MiscControls>--no-multibyte-chars</MiscControls>
               <Define>USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>.\Start;.\Lib;.\Hardware;.\User;.\Sys</IncludePath>
+              <IncludePath>.\Start;.\Lib;.\Hardware;.\User;.\Sys;.\Tools</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -639,6 +639,21 @@
               <FileName>ESP8266.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\hardware\ESP8266.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Tools</GroupName>
+          <Files>
+            <File>
+              <FileName>MyStringTool.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Tools\MyStringTool.h</FilePath>
+            </File>
+            <File>
+              <FileName>MyStringTool.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Tools\MyStringTool.c</FilePath>
             </File>
           </Files>
         </Group>
