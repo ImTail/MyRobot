@@ -1012,8 +1012,8 @@ I (.\Sys\MyUSART.h)(0x666FB89B)
 I (Hardware\SYN6288.h)(0x6668019B)
 I (.\Sys\Delay.h)(0x6130920D)
 I (E:\Keli\ARM\ARMCC\include\string.h)(0x588B8344)
-F (.\hardware\ESP8266.h)(0x666C0E90)()
-F (.\hardware\ESP8266.c)(0x666FB8DE)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\Start -I .\Lib -I .\Hardware -I .\User -I .\Sys -I .\Tools --no-multibyte-chars-I.\RTE\_Target_1-IE:\Keli\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-IE:\Keli\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\esp8266.o --omf_browse .\objects\esp8266.crf --depend .\objects\esp8266.d)
+F (.\hardware\ESP8266.h)(0x66724158)()
+F (.\hardware\ESP8266.c)(0x6672C777)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\Start -I .\Lib -I .\Hardware -I .\User -I .\Sys -I .\Tools --no-multibyte-chars-I.\RTE\_Target_1-IE:\Keli\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-IE:\Keli\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\esp8266.o --omf_browse .\objects\esp8266.crf --depend .\objects\esp8266.d)
 I (.\Start\stm32f10x.h)(0x4D783CB4)
 I (.\Start\core_cm3.h)(0x4D523B58)
 I (E:\Keli\ARM\ARMCC\include\stdint.h)(0x588B8344)
@@ -1043,7 +1043,7 @@ I (.\Lib\stm32f10x_usart.h)(0x4D783BB4)
 I (.\Lib\stm32f10x_wwdg.h)(0x4D783BB4)
 I (.\Lib\misc.h)(0x4D783BB4)
 I (.\Sys\MyUSART.h)(0x666FB89B)
-I (hardware\ESP8266.h)(0x666C0E90)
+I (hardware\ESP8266.h)(0x66724158)
 I (hardware\OLED.h)(0x66606373)
 I (.\Sys\Delay.h)(0x6130920D)
 I (.\Tools\MyStringTool.h)(0x666FB7AF)
@@ -1080,7 +1080,7 @@ I (.\Lib\stm32f10x_tim.h)(0x4D783BB4)
 I (.\Lib\stm32f10x_usart.h)(0x4D783BB4)
 I (.\Lib\stm32f10x_wwdg.h)(0x4D783BB4)
 I (.\Lib\misc.h)(0x4D783BB4)
-F (.\main.c)(0x666FB8C4)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\Start -I .\Lib -I .\Hardware -I .\User -I .\Sys -I .\Tools --no-multibyte-chars-I.\RTE\_Target_1-IE:\Keli\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-IE:\Keli\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+F (.\main.c)(0x6672C68B)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\Start -I .\Lib -I .\Hardware -I .\User -I .\Sys -I .\Tools --no-multibyte-chars-I.\RTE\_Target_1-IE:\Keli\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-IE:\Keli\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
 I (.\Start\stm32f10x.h)(0x4D783CB4)
 I (.\Start\core_cm3.h)(0x4D523B58)
 I (E:\Keli\ARM\ARMCC\include\stdint.h)(0x588B8344)
@@ -1116,5 +1116,6 @@ I (.\Hardware\Cartoon.h)(0x6658421D)
 I (.\Hardware\LD3320.h)(0x6666E10B)
 I (.\Hardware\SYN6288.h)(0x6668019B)
 I (.\Sys\MyUSART.h)(0x666FB89B)
-I (.\Hardware\ESP8266.h)(0x666C0E90)
+I (.\Hardware\ESP8266.h)(0x66724158)
 I (.\Tools\MyStringTool.h)(0x666FB7AF)
+I (E:\Keli\ARM\ARMCC\include\string.h)(0x588B8344)

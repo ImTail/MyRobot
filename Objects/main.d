@@ -37,3 +37,4 @@
 .\objects\main.o: .\Sys\MyUSART.h
 .\objects\main.o: .\Hardware\ESP8266.h
 .\objects\main.o: .\Tools\MyStringTool.h
+.\objects\main.o: E:\Keli\ARM\ARMCC\Bin\..\include\string.h

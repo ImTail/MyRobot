@@ -10,6 +10,7 @@
 
 #include "MyStringTool.h"
 
+#include <string.h>
 
 int main() 
 {
@@ -32,6 +33,7 @@ int main()
 	
 	LD3320_RunOnce();						//第一次运行程序，启动一次识别
 	uint8_t x = 0;
+	
 	
 	
 	while (1)
@@ -87,7 +89,11 @@ int main()
 					if (speechFlag==1)
 					{
 						speechFlag = 0;
-						uint8_t espRes = ESP8266_W_AT("AT","OK",5);
+						uint8_t espRes = 0x01;
+						espRes &= ESP8266_S_Mode(1,1);								//设置模式为station,并存储
+						espRes &= ESP8266_Station_Connect("NPC","123456789",0);		//连接指定AP,不存储
+						espRes &= ESP8266_TCP_Start("192.168.1.3","8080","0");
+						OLED_ShowString(0,2,RX_Data_1,12,1);
 						if (espRes==1)
 						{
 							SYN6288_Speech("成功"); 
